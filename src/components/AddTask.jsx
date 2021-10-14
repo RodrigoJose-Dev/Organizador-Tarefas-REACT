@@ -13,6 +13,7 @@ const AddTask = ({ handleTaskAdd }) => {
 
   const handleTaskAddClick = () => {
     handleTaskAdd(inputData);
+    setInputData(""); //setar para vazio após add uma tarefa
   };
 
   return (

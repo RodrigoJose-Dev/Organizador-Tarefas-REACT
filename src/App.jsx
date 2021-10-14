@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 import "./App.css";
 import AddTask from "./components/AddTask";
@@ -23,12 +24,23 @@ const App = () => {
     },
   ]);
 
+  //vai fazer a troca de status da task e vai retornar tudo dentro dela
+  const handleTaskClickStatus = (taskId) => {
+    const newTasks = tasks.map((task) => {
+      if (task.id === taskId) return { ...tasks, completed: !task.completed };
+      //se for verdadeiro efetua a mudança de completed da task
+      else return task; //se for false retorna apenas a task
+    });
+
+    setTasks(newTasks);
+  };
+
   const handleTaskAdd = (taskTitle) => {
     const newTasks = [
       ...tasks,
       {
         title: taskTitle,
-        id: Math.random(10),
+        id: uuidv4(),
         completed: false,
       },
     ];
@@ -40,7 +52,7 @@ const App = () => {
     <>
       <div className="container">
         <AddTask handleTaskAdd={handleTaskAdd} />
-        <Tasks tasks={tasks} />
+        <Tasks tasks={tasks} handleTaskClickStatus={handleTaskClickStatus} />
       </div>
     </>
   );
