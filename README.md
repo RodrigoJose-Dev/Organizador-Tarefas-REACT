@@ -1,3 +1,3 @@
 # Organizador-Tarefas-REACT
 
-A project created for studies
+Project created for studies only, without any commercial purposes
