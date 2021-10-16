@@ -6,7 +6,7 @@ const Task = ({ task, handleTaskClickStatus }) => {
   return (
     <div
       className="task-container"
-      style={task.completed ? { borderLeft: "6px solid chartreuse" } : {}} //troca o style caso completed seja true
+      style={task.completed ? { borderLeft: "6px solid chartreuse" } : {}}
     >
       <div
         className="task-title"

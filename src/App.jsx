@@ -27,9 +27,9 @@ const App = () => {
   //vai fazer a troca de status da task e vai retornar tudo dentro dela
   const handleTaskClickStatus = (taskId) => {
     const newTasks = tasks.map((task) => {
-      if (task.id === taskId) return { ...tasks, completed: !task.completed };
+      if (task.id === taskId) return { ...task, completed: !task.completed };
       //se for verdadeiro efetua a mudança de completed da task
-      else return task; //se for false retorna apenas a task
+      return task; //se for false retorna apenas a task
     });
 
     setTasks(newTasks);
