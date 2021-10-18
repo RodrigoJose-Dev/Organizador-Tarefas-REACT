@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { BrowserRouter, Route } from "react-router-dom";
 
-import Header from "./components/Header";
-import AddTask from "./components/AddTask";
-import Tasks from "./components/Tasks";
+import Header from "./components/Header/Header";
+import AddTask from "./components/AddTask/AddTask";
+import Tasks from "./components/Tasks/Tasks";
+import TaskDetails from "./components/TaskDetails/TaskDetails";
 
 import "./App.css";
 
@@ -78,6 +79,7 @@ const App = () => {
             );
           }}
         />
+        <Route path="/:taskTitle" exact component={TaskDetails} />
       </div>
     </BrowserRouter>
   );
