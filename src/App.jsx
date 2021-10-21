@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import { BrowserRouter, Route } from "react-router-dom";
 
@@ -28,6 +29,17 @@ const App = () => {
     },
   ]);
 
+  //executa o bloco de código sempre que uma variável muda
+  useEffect(() => {
+    const fetchTasks = async () => {
+      const { data } = await axios.get(
+        "https://jsonplaceholder.typicode.com/todos?_limit=10"
+      );
+      setTasks(data);
+    };
+    fetchTasks();
+  }, []); //-> lista de dependências
+
   //vai fazer a troca de status da task e vai retornar tudo dentro dela
   const handleTaskClickStatus = (taskId) => {
     const newTasks = tasks.map((task) => {
@@ -55,7 +67,7 @@ const App = () => {
 
   //remover task
   const handleTaskDel = (taskId) => {
-    const newTasks = tasks.filter((task) => task.id != taskId);
+    const newTasks = tasks.filter((task) => task.id !== taskId);
     setTasks(newTasks);
   };
 
@@ -80,6 +92,19 @@ const App = () => {
           }}
         />
         <Route path="/:taskTitle" exact component={TaskDetails} />
+      </div>
+
+      <div style={{ color: "white", textAlign: "center" }}>
+        <p>
+          API utilizada para testes:{" "}
+          <a
+            style={{ textDecoration: "none", color: "chartreuse" }}
+            href="https://jsonplaceholder.typicode.com/"
+            target="_blank"
+          >
+            JSONPlaceholder
+          </a>
+        </p>
       </div>
     </BrowserRouter>
   );

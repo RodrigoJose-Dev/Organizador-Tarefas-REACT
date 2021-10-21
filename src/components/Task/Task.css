@@ -14,6 +14,12 @@
   user-select: none;
 }
 
+.buttons-container {
+  width: 30%;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .task-info-btn,
 .remove-task-btn {
   background-color: #444;
